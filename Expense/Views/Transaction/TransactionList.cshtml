@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Expense.Models.Transaction>
+
+<li class="nav-item">
+<a class="nav-link text-white" asp-area="" asp-controller="Category" asp-action="CreateCategory">CreateCategory</a>
+</li>
+
+
+
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="categories" dataSource="@Model" gridLines="None"allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="TitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field="TransactionDate" ></e-grid-column>
+                <e-grid-column headerText="FormattedAmount" field="FormattedAmount"></e-grid-column>
+                <e-grid-column headerText="Action" template="#actionColumnTemplate" width="150px"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+</div>
+
+<script id="actionColumnTemplate" type="text/x-template">
+  <div class="d-flex flex-row justify-content-start">
+      <a class=" btn btn-primary mr-5"  href="/Transaction/TransActionDetails/${TransactionId}">Edit</a>
+
+      <form method="post" action="/Transaction/TransActionDelete/${TransactionId}">
+        <button type="submit" class="btn  btn-danger">Delete</button>
+      </form>
+  </div>
+</script>

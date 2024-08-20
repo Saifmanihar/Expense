@@ -1,0 +1,25 @@
+﻿@model Expense.Models.Transaction;
+
+<div class="container-fluid widget p-5 col-lg-10 border-white">
+    <div class="text-warning">Create transaction</div>
+
+    <form asp-action="Index" asp-controller="Transaction" method="post">
+        <div class="mb-3">
+            <ejs-datepicker ejs-for="TransactionDate" placeholder="Select the date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+        </div>
+        <div class="mb-3">
+            <ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId" dataSource="@ViewBag.categories "
+            placeholder="Category" floatLabelType="Always" allowFiltering="true"  ignoreAccent="true" filterType="Contains" popupHeight="202px;">
+                <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
+            </ejs-dropdownlist>
+            <span asp-validation-for="Category"></span>
+        </div>
+        <div class="mb-3">
+        <ejs-numerictextbox ejs-for="Amount" placeholder="Amount" floatLabelType="Always" min="0" id="Amount" format="c0"></ejs-numerictextbox>
+        </div>
+        <div class="mb-3">
+            <ejs-textbox id="note" ejs-for="note" floatLabelType="Always" placeholder="note" multiline="true"> </ejs-textbox>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

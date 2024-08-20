@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["DashBoard"] = true;
+}
+<div class="row">
+    <div class="d-flex flex-row widget">
+        <div class="d-flex flex-col justify-content-center p-5">
+            <div>$</div>
+        </div>
+        <div class="d-flex flex-col justify-content-center p-5">
+            <div>@ViewBag.Income</div>
+        </div>
+
+                <div class="d-flex flex-col justify-content-center p-5">
+            <div>$</div>
+        </div>
+        <div class="d-flex flex-col justify-content-center p-5">
+            <div>@ViewBag.Expense</div>
+        </div>
+
+                <div class="d-flex flex-col justify-content-center p-5">
+            <div>$</div>
+        </div>
+        <div class="d-flex flex-col justify-content-center p-5">
+            <div>@ViewBag.balance</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div >
+            <canvas id="pieChart" width="350" height="200" style="width:350px; height:200px;" ></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+<script >
+
+// In your JavaScript file
+
+ $(document).ready(function() {
+        $.ajax({
+            type: "POST",
+            url: "/DashBoard/Index",
+            data: [],
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: onSuccess,
+        });
+
+        function onSuccess(data) {
+            var pieChart = document.getElementById('pieChart');
+            var income = data.income;
+            var expense = data.expense;
+            var balance = data.balance;
+
+            new Chart(pieChart, {
+                type: "doughnut",
+                data: {
+                    labels: ['Income', 'Expense', 'Balance'],
+                    datasets: [{
+                        data: [income, expense, balance],
+                        backgroundColor: [
+                            { backgroundColor: 'Red' },
+                            { backgroundColor: 'Blue' },
+                            { backgroundColor: 'Green' }
+                        ],
+                        label: 'Balance'
+                    }]
+                }
+            });
+        }
+    });</script>

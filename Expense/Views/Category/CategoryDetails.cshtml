@@ -1,0 +1,31 @@
+﻿@model Expense.Models.Category
+
+
+
+<h1 class="text-white">Details Category</h1>
+
+<form method="post"asp-controller="category" class="text-white" asp-action="UpdateCategory">
+    <div asp-validation-summary="ModelOnly"></div>
+         <input type="hidden" asp-for="CategoryId"/>
+<div class='e-btn-group custom-rbt-group col-lg-6'>
+    <input type="radio" id="radioleft" asp-for="Type" value="Expense" checked="@Model.Type.Equals("Expense")"/>
+    <label class="e-btn" for="radioleft">Expense</label>
+    <input type="radio" id="radiomiddle" asp-for="Type" value="Income" checked="@Model.Type.Equals("Income")"  />
+    <label class="e-btn" for="radiomiddle">Income</label>
+</div>
+
+
+  <div class="form-group">
+         <ejs-textbox id="title" placeholder=" Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+        <span asp-validation-for="Title"></span>
+  </div>
+
+
+  <div class="form-group mb-3">
+       <ejs-textbox id="Icon" placeholder="Category Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
+    <span asp-validation-for="Icon"></span>
+  </div>
+
+
+  <ejs-button id="submit" type="submit" class="btn btn-primary mt-3" content="Submit"></ejs-button>
+</form>

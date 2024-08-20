@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Expense</title>
+    @*syncFusion css*@
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/25.2.3/bootstrap5-dark.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Expense.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        @*google-font*@
+<link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100..900&display=swap" rel="stylesheet">    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @*SyncFusion script*@
+        <script src="https://cdn.syncfusion.com/ej2/25.2.3/dist/ej2.min.js"></script>
+
+        @*chart js*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+</head>
+<body class="e-bigger bg-dark text-white">
+        <partial name="PartialView"></partial>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 mt-5">
+                                      <a class="navbar-brand" href="#">Navbar</a>
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                <a class="nav-link" asp-action="Index" asp-controller="Transaction">Transaction</a>
+                              </li>
+                              <li class="nav-item active">
+                                <a class="nav-link"  asp-action="Index" asp-controller="Category">Category </a>
+                              </li>
+                              <li class="nav-item active">
+                                <a class="nav-link"  asp-action="TransactionList" asp-controller="Transaction">Transaction List </a>
+                              </li>
+                            </ul>
+                          </div>
+        </nav>
+    </header>
+    <div class="main-content">
+            <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <main role="main" class="pb-3">
+                    @if(ViewData["DashBoard"]==null){
+                    <div class="row">
+
+                    </div>
+                    }
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+       
+    </div>
+    </div>
+@*
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Expense - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+        <ejs-scripts></ejs-scripts>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+</body>
+</html>
